@@ -1,2 +1,2 @@
 # gobarber
-bootcamp-gostack-desafio-02
+bootcamp-gostack
