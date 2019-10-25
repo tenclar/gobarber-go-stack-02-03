@@ -25,9 +25,9 @@ class Database {
     this.mongoConnection = mongoose.connect(
       'mongodb://localhost:27017/gobarber',
       {
-        useUnifiedTopology: true,
         useNewUrlParser: true,
-        useFindAndModify: true
+        useFindAndModify: false,
+        useUnifiedTopology: true
       }
     );
   }
