@@ -1,11 +1,12 @@
 import 'dotenv/config';
+import './database';
 import * as Sentry from '@sentry/node';
 import express from 'express';
 import 'express-async-errors';
 import Youch from 'youch';
 import path from 'path';
 import routes from './routes';
-import './database';
+
 import sentryConfig from './config/sentry';
 
 class App {
@@ -16,6 +17,7 @@ class App {
     this.middlewares();
 
     this.routes();
+    this.exceptionHandler();
   }
 
   middlewares() {
