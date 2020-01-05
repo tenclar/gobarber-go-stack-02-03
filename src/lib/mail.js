@@ -7,22 +7,25 @@ import mailConfig from '../config/mail';
 class Mail {
   constructor() {
     const { host, port, secure, auth } = mailConfig;
+
     this.transporter = nodemailer.createTransport({
       host,
       port,
       secure,
       auth: auth.user ? auth : null
     });
+
     this.configureTemplates();
   }
 
   configureTemplates() {
     const viewPath = resolve(__dirname, '..', 'app', 'views', 'emails');
+
     this.transporter.use(
       'compile',
       nodemailerhbs({
         viewEngine: exphbs.create({
-          layoutDir: resolve(viewPath, 'layouts'),
+          layoutsDir: resolve(viewPath, 'layouts'),
           partialsDir: resolve(viewPath, 'partials'),
           defaultLayout: 'default',
           extname: '.hbs'
@@ -40,4 +43,5 @@ class Mail {
     });
   }
 }
+
 export default new Mail();
